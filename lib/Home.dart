@@ -179,16 +179,13 @@ class _HomeState extends State<Home> {
                 child: ListView.builder(
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, index) {
-
                       var ourData = snapshot.data[index];
-                      
                       return Container(
                         child: Card(
                           elevation: 10.0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)
                           ),
-
                           child: Column(
                             children: <Widget>[
                               //first container
