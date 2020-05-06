@@ -160,8 +160,7 @@ class _HomeState extends State<Home> {
 
     );
   }
-
-
+  
   Widget top_Places(BuildContext context) {
     return Container(
       height: 450.0,
