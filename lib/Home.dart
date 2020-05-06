@@ -181,13 +181,14 @@ class _HomeState extends State<Home> {
                     itemBuilder: (BuildContext context, index) {
 
                       var ourData = snapshot.data[index];
-
+                      
                       return Container(
                         child: Card(
                           elevation: 10.0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)
                           ),
+
                           child: Column(
                             children: <Widget>[
                               //first container
@@ -202,9 +203,7 @@ class _HomeState extends State<Home> {
                                         foregroundColor: Colors.white,
                                       ),
                                     ),
-
                                     SizedBox(width: 5.0,),
-
                                     Container(
                                       child: Row(
                                         children: <Widget>[
@@ -229,6 +228,7 @@ class _HomeState extends State<Home> {
                                               ],
                                             ),
                                           ),
+
                                           Container(
                                             margin: EdgeInsets.only(right: 15.0),
                                             child: Icon(Icons.more_horiz,size: 30.0,),
