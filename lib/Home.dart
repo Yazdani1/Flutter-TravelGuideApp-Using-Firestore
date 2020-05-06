@@ -85,7 +85,6 @@ class _HomeState extends State<Home> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-
                   city_Category(context, img3, "London"),
                   city_Category(context, img2, "Italy"),
                   city_Category(context, img5, "Germany"),
@@ -100,6 +99,12 @@ class _HomeState extends State<Home> {
             //Top Most Place Container Start
 
             Container(
+
+              child: Column(
+                children: <Widget>[
+                  top_Places(context);
+                ],
+              ),
 //              width: MediaQuery.of(context).size.width,
 //              height: MediaQuery.of(context).size.height,
 //              child: Column(
@@ -153,6 +158,102 @@ class _HomeState extends State<Home> {
         ],
       ),
 
+    );
+  }
+
+
+  Widget top_Places(BuildContext context) {
+    return Container(
+      height: 450.0,
+      margin: EdgeInsets.all(10.0),
+      child: FutureBuilder(
+          future: getData(),
+          builder: (BuildContext context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return RefreshIndicator(
+                onRefresh: getRefresh,
+                child: ListView.builder(
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (BuildContext context, index) {
+
+                      var ourData = snapshot.data[index];
+
+                      return Container(
+                        child: Card(
+                          elevation: 10.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              //first container
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Container(
+                                      child: CircleAvatar(
+                                        child: Text(ourData.data['name'][0]),
+                                        backgroundColor: Colors.green,
+                                        foregroundColor: Colors.white,
+                                      ),
+                                    ),
+
+                                    SizedBox(width: 5.0,),
+
+                                    Container(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Container(
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Container(
+                                                  width: MediaQuery.of(context).size.width/1.5,
+                                                  child: Text(ourData.data['name'],
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                    color: Colors.black
+                                                  ),
+                                                  ),
+                                                ),
+                                                SizedBox(height: 5.0,),
+                                                Text(ourData.data['days'],style: TextStyle(
+                                                  fontSize: 17.0,
+                                                  color: Colors.deepOrange
+                                                ),)
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(right: 15.0),
+                                            child: Icon(Icons.more_horiz,size: 30.0,),
+                                          )
+                                          
+
+                                        ],
+                                      ),
+                                    )
+
+                                  ],
+                                ),
+                              ),
+                              //end first container
+
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+                ),
+              );
+            }
+          }
+      ),
     );
   }
 
