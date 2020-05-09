@@ -95,14 +95,12 @@ class _HomeState extends State<Home> {
             ),
 
             //Categories container End
-
             //Top Most Place Container Start
-
             Container(
 
               child: Column(
                 children: <Widget>[
-                  top_Places(context);
+                  top_Places(context)
                 ],
               ),
 //              width: MediaQuery.of(context).size.width,
@@ -160,7 +158,7 @@ class _HomeState extends State<Home> {
 
     );
   }
-  
+
   Widget top_Places(BuildContext context) {
     return Container(
       height: 450.0,
