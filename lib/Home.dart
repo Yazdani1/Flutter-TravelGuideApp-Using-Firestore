@@ -262,9 +262,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               //end first container
-
                               //second container
-
                               Container(
                                 margin: EdgeInsets.only(top: 10.0),
                                 child: ClipRRect(
@@ -282,7 +280,7 @@ class _HomeState extends State<Home> {
                               //end of second container
 
                               //third container
-                              
+
                               Container(
                                 padding: EdgeInsets.all(10.0),
                                 child: Text(ourData.data['des'],
