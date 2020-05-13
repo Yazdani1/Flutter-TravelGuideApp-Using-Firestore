@@ -228,7 +228,7 @@ class _HomeState extends State<Home> {
                                                 ),
 
                                                 SizedBox(height: 5.0,),
-                                                
+
                                                 Text(ourData.data['days'],
                                                   style: TextStyle(
                                                       fontSize: 17.0,
@@ -282,6 +282,7 @@ class _HomeState extends State<Home> {
                               //end of second container
 
                               //third container
+                              
                               Container(
                                 padding: EdgeInsets.all(10.0),
                                 child: Text(ourData.data['des'],
