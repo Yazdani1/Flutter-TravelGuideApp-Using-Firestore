@@ -176,11 +176,13 @@ class _HomeState extends State<Home> {
                       var ourData = snapshot.data[index];
                       return Container(
                         margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
+
                         child: Card(
                           elevation: 10.0,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0)
                           ),
+                          
                           child: Column(
                             children: <Widget>[
                               //first container
@@ -200,7 +202,7 @@ class _HomeState extends State<Home> {
                                     ),
 
                                     SizedBox(width: 5.0,),
-                                    
+
                                     Container(
                                       child: Row(
                                         children: <Widget>[
