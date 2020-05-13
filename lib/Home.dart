@@ -182,7 +182,7 @@ class _HomeState extends State<Home> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0)
                           ),
-                          
+
                           child: Column(
                             children: <Widget>[
                               //first container
@@ -192,6 +192,7 @@ class _HomeState extends State<Home> {
                                   mainAxisAlignment: MainAxisAlignment
                                       .spaceBetween,
                                   children: <Widget>[
+
                                     Container(
                                       margin: EdgeInsets.only(left: 10.0),
                                       child: CircleAvatar(
@@ -211,6 +212,7 @@ class _HomeState extends State<Home> {
                                               crossAxisAlignment: CrossAxisAlignment
                                                   .start,
                                               children: <Widget>[
+
                                                 Container(
                                                   width: MediaQuery
                                                       .of(context)
@@ -224,7 +226,9 @@ class _HomeState extends State<Home> {
                                                     ),
                                                   ),
                                                 ),
+
                                                 SizedBox(height: 5.0,),
+                                                
                                                 Text(ourData.data['days'],
                                                   style: TextStyle(
                                                       fontSize: 17.0,
