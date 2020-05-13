@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
             //Categories container Start
 
             Container(
-              height: 250.0,
+              height: 200.0,
               margin: EdgeInsets.only(top: 10.0),
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -124,7 +124,7 @@ class _HomeState extends State<Home> {
 
   Widget city_Category(BuildContext context, String img, String name) {
     return Container(
-      height: 250.0,
+      height: 200.0,
       margin: EdgeInsets.only(left: 10.0),
       child: Stack(
         children: <Widget>[
@@ -175,19 +175,23 @@ class _HomeState extends State<Home> {
                     itemBuilder: (BuildContext context, index) {
                       var ourData = snapshot.data[index];
                       return Container(
+                        margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
                         child: Card(
                           elevation: 10.0,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)
+                              borderRadius: BorderRadius.circular(20.0)
                           ),
                           child: Column(
                             children: <Widget>[
                               //first container
                               Container(
+
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment
+                                      .spaceBetween,
                                   children: <Widget>[
                                     Container(
+                                      margin: EdgeInsets.only(left: 10.0),
                                       child: CircleAvatar(
                                         child: Text(ourData.data['name'][0]),
                                         backgroundColor: Colors.green,
@@ -200,28 +204,47 @@ class _HomeState extends State<Home> {
                                         children: <Widget>[
                                           Container(
                                             child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment
+                                                  .start,
                                               children: <Widget>[
                                                 Container(
-                                                  width: MediaQuery.of(context).size.width/1.5,
-                                                  child: Text(ourData.data['name'],
-                                                  style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    color: Colors.black
-                                                  ),
+                                                  width: MediaQuery
+                                                      .of(context)
+                                                      .size
+                                                      .width / 1.5,
+                                                  child: Text(
+                                                    ourData.data['name'],
+                                                    style: TextStyle(
+                                                        fontSize: 20.0,
+                                                        color: Colors.black
+                                                    ),
                                                   ),
                                                 ),
                                                 SizedBox(height: 5.0,),
-                                                Text(ourData.data['days'],style: TextStyle(
-                                                  fontSize: 17.0,
-                                                  color: Colors.deepOrange
-                                                ),)
+                                                Text(ourData.data['days'],
+                                                  style: TextStyle(
+                                                      fontSize: 17.0,
+                                                      color: Colors.deepOrange
+                                                  ),)
                                               ],
                                             ),
                                           ),
+                                          
                                           Container(
-                                            margin: EdgeInsets.only(right: 15.0),
-                                            child: Icon(Icons.more_horiz,size: 30.0,),
+                                            margin: EdgeInsets.only(
+                                                right: 15.0),
+                                            child: InkWell(
+                                              onTap: () {
+                                                bottom_Sheet(context,
+                                                    ourData.data['name'],
+                                                    ourData.data['days'],
+                                                    ourData.data['img'],
+                                                    ourData.data['des']
+                                                );
+                                              },
+                                              child: Icon(
+                                                Icons.more_horiz, size: 30.0,),
+                                            ),
                                           )
                                         ],
                                       ),
@@ -231,6 +254,39 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               //end first container
+
+                              //second container
+
+                              Container(
+                                margin: EdgeInsets.only(top: 10.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: Image.network(ourData.data['img'],
+                                    height: 250.0,
+                                    fit: BoxFit.cover,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
+                                  ),
+                                ),
+                              ),
+                              //end of second container
+
+                              //third container
+                              Container(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(ourData.data['des'],
+                                  maxLines: 3,
+                                  style: TextStyle(
+                                      fontSize: 18.0,
+                                      color: Colors.black
+                                  ),
+
+                                ),
+                              ),
+                              //end of third container
+
 
                             ],
                           ),
@@ -245,35 +301,124 @@ class _HomeState extends State<Home> {
     );
   }
 
-//  Widget top_Places(BuildContext context) {
-//    return Container(
-//      height: 250.0,
-//      child: FutureBuilder(
-//          future: getData(),
-//          builder: (BuildContext context, snapshot) {
-//            if(snapshot.connectionState == ConnectionState.waiting){
-//              return Center(
-//                child: CircularProgressIndicator(),
-//              );
-//            }else{
-//              return RefreshIndicator(
-//                onRefresh: getRefresh,
-//                child: ListView.builder(
-//                   itemCount: snapshot.data.length,
-//                  itemBuilder: (BuildContext context, index){
-//                     var ourData = snapshot.data[index];
-//                     return Card(
-//                       elevation: 10.0,
-//                       child: Text(ourData.data['name']),
-//                     );
-//                  }
-//                ),
-//              );
-//            }
-//          }
-//      ),
-//    );
-//  }
+  Widget bottom_Sheet(BuildContext context, String name, String days,
+      String img, String des) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context){
+          return Container(
+            height: 700.0,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0)
+                  )
+                ),
+                child: Card(
+                  margin: EdgeInsets.all(10.0),
+                  elevation: 10.0,
+                  child: Column(
+                    children: <Widget>[
+
+                      Container(
+                        padding: EdgeInsets.all(10.0),
+                        child: Row(
+                          children: <Widget>[
+                            
+                            Container(
+                              child: CircleAvatar(
+                                child: Text(name[0],
+                                style: TextStyle(
+                                  fontSize: 20.0
+                                ),
+                                ),
+                                backgroundColor: Colors.deepOrange,
+                                maxRadius: 25.0,
+
+                              ),
+                            ),
+
+                            SizedBox(width: 10.0,),
+
+                            Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+
+                                  Container(
+                                    child: Text(name,
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Colors.black87
+                                    ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 5.0,),
+                                  Container(
+                                    child: Text(days,
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Colors.amber,
+                                      fontWeight: FontWeight.bold
+                                    ),
+                                    ),
+                                  )
+
+                                ],
+                              ),
+                            )
+
+                            
+                          ],
+                        ),
+                      ),
+
+                      SizedBox(height: 6.0,),
+
+                      Container(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20.0),
+                          child: Image.network(img,
+                          height: 250.0,
+                            fit: BoxFit.cover,
+                            width: MediaQuery.of(context).size.width,
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(height: 10.0,),
+
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(des,
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.black87
+                          ),
+                          ),
+                        ),
+                      )
+
+
+
+
+
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        }
+    );
+  }
+
 
 }
 
