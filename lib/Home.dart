@@ -198,7 +198,9 @@ class _HomeState extends State<Home> {
                                         foregroundColor: Colors.white,
                                       ),
                                     ),
+
                                     SizedBox(width: 5.0,),
+                                    
                                     Container(
                                       child: Row(
                                         children: <Widget>[
@@ -229,7 +231,7 @@ class _HomeState extends State<Home> {
                                               ],
                                             ),
                                           ),
-                                          
+
                                           Container(
                                             margin: EdgeInsets.only(
                                                 right: 15.0),
