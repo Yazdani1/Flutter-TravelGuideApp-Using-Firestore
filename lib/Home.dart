@@ -113,15 +113,12 @@ class _HomeState extends State<Home> {
             )
 
             // Top Most Place Container End
-
-
           ],
         )
         ,
 
       )
       ,
-
     );
   }
 
@@ -222,13 +219,10 @@ class _HomeState extends State<Home> {
                                               ],
                                             ),
                                           ),
-
                                           Container(
                                             margin: EdgeInsets.only(right: 15.0),
                                             child: Icon(Icons.more_horiz,size: 30.0,),
                                           )
-                                          
-
                                         ],
                                       ),
                                     )
