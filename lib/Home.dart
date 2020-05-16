@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
+import 'package:flutter_ud_travel_guide/London.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -85,7 +86,12 @@ class _HomeState extends State<Home> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  city_Category(context, img3, "London"),
+                  InkWell(
+                      child: city_Category(context, img3, "London"),
+                    onTap: (){
+                        Navigator.of(context).push(_createRoute(context));
+                    },
+                  ),
                   city_Category(context, img2, "Italy"),
                   city_Category(context, img5, "Germany"),
                   city_Category(context, img7, "Poland"),
@@ -421,6 +427,27 @@ class _HomeState extends State<Home> {
             ),
           );
         }
+    );
+  }
+
+
+  Route _createRoute(BuildContext context) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => London(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+//        var begin = Offset(0.0, 1.0);
+//        var end = Offset.zero;
+//        var curve = Curves.ease;
+
+        //var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        return SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(-1,0),
+            end: Offset.zero,
+          ).animate(animation),
+          child: child,
+        );
+      },
     );
   }
 
