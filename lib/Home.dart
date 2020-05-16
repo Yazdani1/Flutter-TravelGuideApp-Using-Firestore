@@ -278,9 +278,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               //end of second container
-
                               //third container
-
                               Container(
                                 padding: EdgeInsets.all(10.0),
                                 child: Text(ourData.data['des'],
