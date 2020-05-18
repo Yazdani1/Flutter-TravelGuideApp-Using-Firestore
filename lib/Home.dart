@@ -79,7 +79,6 @@ class _HomeState extends State<Home> {
             //End Carousol Container
 
             //Categories container Start
-
             Container(
               height: 200.0,
               margin: EdgeInsets.only(top: 10.0),
@@ -99,7 +98,6 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-
             //Categories container End
             //Top Most Place Container Start
             Container(
