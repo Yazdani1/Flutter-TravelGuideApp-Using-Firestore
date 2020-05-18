@@ -36,8 +36,7 @@ class _HomeState extends State<Home> {
       getData();
     });
   }
-
-
+  
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -57,21 +56,18 @@ class _HomeState extends State<Home> {
                   .width,
 
               child: Carousel(
-
                 images: [
                   NetworkImage(img1),
                   NetworkImage(img2),
                   NetworkImage(img3),
                   NetworkImage(img4)
                 ],
-
                 dotSize: 5.0,
                 dotSpacing: 25.0,
                 dotColor: Colors.lightGreenAccent,
                 indicatorBgPadding: 10.0,
                 //dotBgColor: Colors.purple.withOpacity(0.5),
                 borderRadius: true,
-
               ),
 
             ),
