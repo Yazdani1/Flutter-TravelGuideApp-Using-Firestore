@@ -19,7 +19,6 @@ class _HomeState extends State<Home> {
   String img6 = "https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
   String img7 = "https://images.pexels.com/photos/2589011/pexels-photo-2589011.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
 
-
   //Firestore Function
 
   Future getData() async {
@@ -36,9 +35,7 @@ class _HomeState extends State<Home> {
       getData();
     });
   }
-  
 
-  
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
