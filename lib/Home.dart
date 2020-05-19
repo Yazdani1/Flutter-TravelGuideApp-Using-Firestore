@@ -46,14 +46,12 @@ class _HomeState extends State<Home> {
           children: <Widget>[
 
             //Carousol Container Start
-
             Container(
               height: 250.0,
               width: MediaQuery
                   .of(context)
                   .size
                   .width,
-
               child: Carousel(
                 images: [
                   NetworkImage(img1),
