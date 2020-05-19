@@ -18,11 +18,9 @@ class _LondonState extends State<London> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-
             //first container
             Container(
               margin: EdgeInsets.only(top: 40.0, left: 10.0),
@@ -44,7 +42,6 @@ class _LondonState extends State<London> {
               ),
             ),
             //end first container
-
             //Second container
             Container(
               height: 105.0,
