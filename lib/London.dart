@@ -7,9 +7,7 @@ class London extends StatefulWidget {
   _LondonState createState() => new _LondonState();
 }
 
-
 class _LondonState extends State<London> {
-  
   Future getTouristActivities() async{
     var firestore = Firestore.instance;
     QuerySnapshot snapshot = await firestore.collection("ToursActivities").getDocuments();
@@ -26,12 +24,10 @@ class _LondonState extends State<London> {
           children: <Widget>[
 
             //first container
-
             Container(
               margin: EdgeInsets.only(top: 40.0, left: 10.0),
               child: Row(
                 children: <Widget>[
-
                   InkWell(
                     child: Icon(Icons.arrow_back, size: 30.0,),
                     onTap: () {
@@ -39,17 +35,14 @@ class _LondonState extends State<London> {
                     },
                   ),
                   SizedBox(width: 10.0,),
-
                   Text("London", style: TextStyle(
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold
                   ),)
 
-
                 ],
               ),
             ),
-
             //end first container
 
             //Second container
