@@ -8,12 +8,12 @@ class London extends StatefulWidget {
 }
 
 class _LondonState extends State<London> {
+
   Future getTouristActivities() async{
     var firestore = Firestore.instance;
     QuerySnapshot snapshot = await firestore.collection("ToursActivities").getDocuments();
     return snapshot.documents;
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,6 @@ class _LondonState extends State<London> {
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold
                   ),)
-
                 ],
               ),
             ),
