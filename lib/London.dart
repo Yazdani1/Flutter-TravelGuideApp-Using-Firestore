@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'Home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
+
 class London extends StatefulWidget {
   @override
   _LondonState createState() => new _LondonState();
@@ -9,9 +10,10 @@ class London extends StatefulWidget {
 
 class _LondonState extends State<London> {
 
-  Future getTouristActivities() async{
+  Future getTouristActivities() async {
     var firestore = Firestore.instance;
-    QuerySnapshot snapshot = await firestore.collection("ToursActivities").getDocuments();
+    QuerySnapshot snapshot = await firestore.collection("ToursActivities")
+        .getDocuments();
     return snapshot.documents;
   }
 
@@ -44,7 +46,7 @@ class _LondonState extends State<London> {
             //Second container
             Container(
               height: 105.0,
-              margin: EdgeInsets.only(left:10.0,top: 15.0),
+              margin: EdgeInsets.only(left: 10.0, top: 15.0),
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
@@ -62,21 +64,22 @@ class _LondonState extends State<London> {
                         Container(
                           margin: EdgeInsets.only(top: 12.0),
                           child: Center(
-                              child: Icon(Icons.restaurant,size: 40.0,color: Colors.white,)),
+                              child: Icon(Icons.restaurant, size: 40.0,
+                                color: Colors.white,)),
                         ),
 
                         Container(
                           margin: EdgeInsets.only(top: 9.0),
-                          child: Text("Eat",style: TextStyle(
-                            fontSize: 25.0,
-                            color: Colors.white
+                          child: Text("Eat", style: TextStyle(
+                              fontSize: 25.0,
+                              color: Colors.white
                           ),),
                         )
                       ],
                     ),
                   ),
-                SizedBox(width: 10.0,),
-                //Second container
+                  SizedBox(width: 10.0,),
+                  //Second container
                   Container(
                     height: 100.0,
                     width: 120.0,
@@ -90,12 +93,13 @@ class _LondonState extends State<London> {
                         Container(
                           margin: EdgeInsets.only(top: 12.0),
                           child: Center(
-                              child: Icon(Icons.card_travel,size: 40.0,color: Colors.white,)),
+                              child: Icon(Icons.card_travel, size: 40.0,
+                                color: Colors.white,)),
                         ),
 
                         Container(
                           margin: EdgeInsets.only(top: 9.0),
-                          child: Text("See",style: TextStyle(
+                          child: Text("See", style: TextStyle(
                               fontSize: 25.0,
                               color: Colors.white
                           ),),
@@ -104,7 +108,7 @@ class _LondonState extends State<London> {
                     ),
                   ),
                   SizedBox(width: 10.0,),
-                //Third container
+                  //Third container
                   Container(
                     height: 100.0,
                     width: 120.0,
@@ -117,11 +121,12 @@ class _LondonState extends State<London> {
                         Container(
                           margin: EdgeInsets.only(top: 12.0),
                           child: Center(
-                              child: Icon(Icons.hotel,size: 40.0,color: Colors.white,)),
+                              child: Icon(
+                                Icons.hotel, size: 40.0, color: Colors.white,)),
                         ),
                         Container(
                           margin: EdgeInsets.only(top: 9.0),
-                          child: Text("Sleep",style: TextStyle(
+                          child: Text("Sleep", style: TextStyle(
                               fontSize: 25.0,
                               color: Colors.white
                           ),),
@@ -143,11 +148,12 @@ class _LondonState extends State<London> {
                         Container(
                           margin: EdgeInsets.only(top: 12.0),
                           child: Center(
-                              child: Icon(Icons.shop,size: 40.0,color: Colors.white,)),
+                              child: Icon(
+                                Icons.shop, size: 40.0, color: Colors.white,)),
                         ),
                         Container(
                           margin: EdgeInsets.only(top: 9.0),
-                          child: Text("Shop",style: TextStyle(
+                          child: Text("Shop", style: TextStyle(
                               fontSize: 25.0,
                               color: Colors.white
                           ),),
@@ -168,14 +174,17 @@ class _LondonState extends State<London> {
 
                   Container(
                     height: 50.0,
-                    width: MediaQuery.of(context).size.width,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text("Tours & Activities",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold
-                      ),
+                        style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold
+                        ),
                       ),
                     ),
                   ),
@@ -184,6 +193,7 @@ class _LondonState extends State<London> {
 
                   Container(
                     height: 280.0,
+                    child: getToursUI(context),
 
                   )
 
@@ -220,6 +230,64 @@ class _LondonState extends State<London> {
       },
     );
   }
+
+
+  Widget getToursUI(BuildContext context) {
+    return Container(
+      child: FutureBuilder(
+          future: getTouristActivities(),
+          builder: (BuildContext context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (BuildContext context, index) {
+
+                    var OurData = snapshot.data[index];
+                    return Container(
+
+                      height: 250.0,
+                      width: 350.0,
+                      child: Stack(
+                        children: <Widget>[
+
+                          Container(
+                            margin: EdgeInsets.all(10.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Image.network(OurData.data['img'],
+                                height: 200.0,
+                                width: 350.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 150.0,
+                            left: 30.0,
+                            bottom: 40.0,
+                            child: Card(
+                              elevation: 15.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                    );
+                  }
+              );
+            }
+          }
+      ),
+    );
+  }
+
 
 }
 
