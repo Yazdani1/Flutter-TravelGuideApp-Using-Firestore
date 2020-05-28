@@ -16,7 +16,6 @@ class _LondonState extends State<London> {
         .getDocuments();
     return snapshot.documents;
   }
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -171,7 +170,6 @@ class _LondonState extends State<London> {
               margin: EdgeInsets.only(top: 15.0),
               child: Column(
                 children: <Widget>[
-
                   Container(
                     height: 50.0,
                     width: MediaQuery
