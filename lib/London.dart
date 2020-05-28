@@ -230,8 +230,7 @@ class _LondonState extends State<London> {
       },
     );
   }
-
-
+  
   Widget getToursUI(BuildContext context) {
     return Container(
       child: FutureBuilder(
