@@ -188,15 +188,11 @@ class _LondonState extends State<London> {
                       ),
                     ),
                   ),
-
                   SizedBox(height: 10.0,),
-
                   Container(
                     height: 280.0,
                     child: getToursUI(context),
-
                   )
-
 
                 ],
               ),
@@ -230,7 +226,7 @@ class _LondonState extends State<London> {
       },
     );
   }
-  
+
   Widget getToursUI(BuildContext context) {
     return Container(
       child: FutureBuilder(
