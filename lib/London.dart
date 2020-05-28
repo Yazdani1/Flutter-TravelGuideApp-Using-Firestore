@@ -245,15 +245,12 @@ class _LondonState extends State<London> {
               return ListView.builder(
                   itemCount: snapshot.data.length,
                   itemBuilder: (BuildContext context, index) {
-
                     var OurData = snapshot.data[index];
                     return Container(
-
                       height: 250.0,
                       width: 350.0,
                       child: Stack(
                         children: <Widget>[
-
                           Container(
                             margin: EdgeInsets.all(10.0),
                             child: ClipRRect(
