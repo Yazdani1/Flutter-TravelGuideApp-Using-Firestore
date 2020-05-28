@@ -10,12 +10,15 @@ class London extends StatefulWidget {
 
 class _LondonState extends State<London> {
 
+
   Future getTouristActivities() async {
     var firestore = Firestore.instance;
     QuerySnapshot snapshot = await firestore.collection("ToursActivities")
         .getDocuments();
     return snapshot.documents;
   }
+
+  
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
