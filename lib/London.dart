@@ -18,7 +18,7 @@ class _LondonState extends State<London> {
     return snapshot.documents;
   }
 
-  
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -98,7 +98,6 @@ class _LondonState extends State<London> {
                               child: Icon(Icons.card_travel, size: 40.0,
                                 color: Colors.white,)),
                         ),
-
                         Container(
                           margin: EdgeInsets.only(top: 9.0),
                           child: Text("See", style: TextStyle(
