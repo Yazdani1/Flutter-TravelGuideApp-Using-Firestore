@@ -47,7 +47,7 @@ class _LondonState extends State<London> {
             //end first container
 
 
-            
+
             //Second container
             Container(
               height: 105.0,
@@ -110,7 +110,9 @@ class _LondonState extends State<London> {
                       ],
                     ),
                   ),
+                  
                   SizedBox(width: 10.0,),
+
                   //Third container
                   Container(
                     height: 100.0,
